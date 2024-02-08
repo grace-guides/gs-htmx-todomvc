@@ -1,7 +1,6 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven { url "https://repo.grails.org/grails/core" }
         maven { url "https://repo.gradle.org/gradle/libs-releases" }
         maven { url "https://plugins.gradle.org/m2/" }
     }
@@ -12,8 +11,10 @@ buildscript {
     }
 }
 
-version "0.1"
-group "grace.guides"
+ext['htmxVersion'] = '0.0.1-SNAPSHOT'
+
+version projectVersion
+group "org.graceframework.guides"
 
 apply plugin:"eclipse"
 apply plugin:"idea"
@@ -25,7 +26,9 @@ apply plugin:"org.graceframework.asset-pipeline"
 
 repositories {
     mavenCentral()
-    maven { url "https://repo.grails.org/grails/core" }
+    if (projectVersion.endsWith('-SNAPSHOT')) {
+        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+    }
 }
 
 configurations {
@@ -65,6 +68,7 @@ dependencies {
     implementation "org.graceframework.plugins:hibernate5"
     implementation "org.hibernate:hibernate-core:5.6.15.Final"
     implementation "org.graceframework.plugins:gsp"
+    implementation "org.graceframework.plugins:htmx:$htmxVersion"
     profile "org.graceframework.profiles:web"
     runtimeOnly "org.glassfish.web:el-impl:2.2.1-b05"
     runtimeOnly "com.h2database:h2"
