@@ -11,7 +11,7 @@ buildscript {
     }
 }
 
-ext['htmxVersion'] = '0.4.0'
+ext['htmxVersion'] = '0.5.0'
 
 version projectVersion
 group "org.graceframework.guides"
