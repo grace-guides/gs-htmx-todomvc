@@ -18,6 +18,8 @@
 
 <g:layoutBody/>
 
+<asset:javascript src="hyperscript.js"/>
+<asset:javascript src="htmx.js"/>
 <asset:javascript src="application.js"/>
 
 </body>
